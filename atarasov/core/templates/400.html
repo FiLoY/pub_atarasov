@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load static %}
+    <link href="{% static 'css/errors.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div id="notfound">
+        <div class="notfound">
+            <div>
+                <div class="notfound-404">
+                    <h1>!</h1>
+                </div>
+                <h2>Ошибка<br>400</h2>
+            </div>
+            <p>Сервер обнаружил в запросе синтаксическую ошибку.
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

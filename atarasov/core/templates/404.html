@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block styles %}
+    {% load static %}
+    <link href="{% static 'css/errors.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div id="notfound">
+        <div class="notfound">
+            <div>
+                <div class="notfound-404">
+                    <h1>!</h1>
+                </div>
+                <h2>Ошибка<br>404</h2>
+            </div>
+            <p>Возможно, страница, которую вы ищете, была удалена, изменилось ее имя или временно недоступна.
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% block title %}
+    <title>Логин</title>
+{% endblock title %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+<form class="card mt-3" method="post" action="{% url 'signin' %}">
+    {% csrf_token %}
+    <div class="card-header">
+        Вход
+    </div>
+    <div class="card-body">
+        {{ form|crispy }}
+{#        <div class="form-group">#}
+{#            {{ form.username.label_tag }}#}
+{#    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#            <a class="float-right" href="#">Forgot?</a>#}
+{#            {{ form.password.label_tag }}#}
+{#            {% crispy_field form.password  'class' 'form-control' %}#}
+{#            {{ form.password | crispy }}#}
+{#        </div>#}
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary" type="submit" value="login">Войти</button>
+        <input type="hidden" name="next" value="{{ next }}">
+        <a href="{% url 'signup' %}">Регистрация</a>
+    </div>
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+{#<p><a href="{% url 'password_reset' %}">Lost password?</a></p>#}
+
+{% endblock %}
