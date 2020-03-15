@@ -4,7 +4,7 @@ import requests
 class TwitchStartPointApi:
     url = 'https://api.twitch.tv/helix/'
     def __init__(self, token=None):
-        self.token = 'amqvnce0hsnfm72aad3zb3fq6gc8ln'
+        self.token = token
 
     def __getattr__(self, method):
         self.url += method + '/'
